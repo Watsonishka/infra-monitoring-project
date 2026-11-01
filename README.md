@@ -49,7 +49,7 @@ chmod +x check_api.sh analyze_logs.sh
 Проверка доступности API (код возврата 0 — API доступен, 1 — недоступен или ошибка):
 
 ```bash
-./check_api.sh https://httpbin.org/status/200; echo "код: $?"
+./check_api.sh https://httpbin.org/status/200
 ```
 
 Генерация и анализ логов (общее число запросов, топ-3 IP, количество ответов 4xx и 5xx):
@@ -63,7 +63,7 @@ chmod +x check_api.sh analyze_logs.sh
 ```bash
 docker-compose up -d
 docker-compose ps
-curl http://localhost:80     # → Monitoring Service Active
+curl http://localhost:80
 docker-compose down
 ```
 
