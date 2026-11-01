@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ['main']
+  push:
+    branches: ['feature/monitoring']
+
+jobs:
+  check-scripts:
+    name: Проверка Bash-скриптов
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Получить репозиторий
+        uses: actions/checkout@v4
+
+      - name: Проверить синтаксис Bash-скриптов
+        run: |
+          bash -n check_api.sh
+          bash -n analyze_logs.sh
+
+      - name: Тестирование check_api.sh
+        run: ./check_api.sh https://httpbin.org/status/200
+
+      - name: Запуск analyze_logs.sh
+        run: ./analyze_logs.sh
